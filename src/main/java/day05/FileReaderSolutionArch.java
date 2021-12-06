@@ -1,21 +1,23 @@
-package day04;
+package day05;
+
+
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class FileReaderSolutionWithFootBall {
+public class FileReaderSolutionArch {
     public static void main(String[] args) {
         String fileName = "src/main/resources/weather.dat";
-        System.out.println(new FileReaderSolutionWithFootBall().findSmallestTemperatureSpread(fileName));
+        System.out.println(new FileReaderSolutionArch().findSmallestTemperatureSpread(fileName));
 
         String fileNameFootball = "src/main/resources/football.dat";
+        System.out.println(new FileReaderSolutionArch().findSmallestDifference(fileNameFootball));
 
-        System.out.println(new FileReaderSolutionWithFootBall().findSmallestDifference(fileNameFootball));
     }
 
-    private String findSmallestDifference(String fileName){
+    public String findSmallestDifference(String fileName){
         try {
             List<String> lines = Files.readAllLines( Paths.get(fileName));
             int minSpread = Integer.MAX_VALUE;
@@ -29,7 +31,6 @@ public class FileReaderSolutionWithFootBall {
                 if (spread<minSpread){
                     minSpread = spread;
                     minTeam = team;
-
                 }
             }
             return minTeam;
@@ -37,8 +38,7 @@ public class FileReaderSolutionWithFootBall {
             throw new IllegalStateException("nincs ilyen file", ioe);
         }
     }
-
-    private int findSmallestTemperatureSpread(String fileName){
+    public int findSmallestTemperatureSpread(String fileName){
         try {
             List<String> lines = Files.readAllLines( Paths.get(fileName));
             int minSpread = 1000;
